@@ -17,11 +17,15 @@ spec:
       labels:
         app: accounts
     spec:
+      template:
+        spec:
+          containers:
+          - image: IMAGE_NAME_HERE
+            name: accounts        
       containers:
       - image: us.icr.io/sn-labs-vitorbabo/accounts:1
         name: accounts
         resources: {}
-        
         env:
           - name: DATABASE_HOST
             value: postgresql
@@ -40,4 +44,5 @@ spec:
               secretKeyRef:
                 name: postgresql
                 key: database-user
+
 status: {}
